@@ -1,5 +1,5 @@
-body{
-       font-family: "Gisha", sans-serif;
+body {
+    font-family: "Gisha", sans-serif;
 }
 
 h1 {
@@ -8,7 +8,7 @@ h1 {
 
 table {
     margin: 0 auto;
-    border:4px solid rgb(121, 121, 121);
+    border: 4px solid rgb(121, 121, 121);
     border-collapse: collapse;
 }
 
@@ -22,10 +22,19 @@ table {
     border: 3px solid rgb(121, 121, 121);
 }
 
-td{
+td {
     background-color: lightgray;
 }
 
 .board-container {
     border-collapse: collapse;
+}
+
+.revealed {
+    border: 2px solid rgb(121, 121, 121);
+    background-color: rgb(172, 172, 172);
+}
+
+.mine {
+    background-color: rgb(255, 88, 88);
 }

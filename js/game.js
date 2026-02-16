@@ -17,6 +17,7 @@ const gLevel = {
 }
 
 function onInit() {
+    gGame.isOn = true
     gBoard = buildBoard()
     setMinesNegsCount(gBoard)
     renderBoard(gBoard)
@@ -57,16 +58,38 @@ function setMinesNegsCount(board) {
 }
 
 function onCellClicked(elCell, i, j) {
+    if (!gGame.isOn) return
+
     const cell = gBoard[i][j]
     if (cell.isRevealed || cell.isMarked) return
 
     cell.isRevealed = true
 
     var content = ''
-    if (cell.isMine) content = MINE
-    else if (cell.minesAroundCount > 0) content = cell.minesAroundCount
-
+    if (cell.isMine) {
+        content = MINE
+        gGame.isOn = false
+        console.log('Game Over 💥')
+        elCell.classList.add('mine')
+    } else {
+        gGame.revealedCount++
+        content = cell.minesAroundCount
+    }
+    // else if (cell.minesAroundCount > 0) content = cell.minesAroundCount
     elCell.innerText = content
     elCell.classList.add('revealed')
+}
+
+function onCellMarked(elCell, i, j) {
+    if (!gGame.isOn) return
+
+    const cell = gBoard[i][j]
+    if (cell.isRevealed) return
+
+    cell.isMarked = !cell.isMarked
+    gGame.markedCount += cell.isMarked ? 1 : -1
+
+    elCell.innerText = cell.isMarked ? FLAG : ''
+    elCell.classList.toggle('marked', cell.isMarked)
 }
 

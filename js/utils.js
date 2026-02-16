@@ -20,10 +20,12 @@ function renderBoard(board) {
                 else cellContent = '' // 0 נשאר ריק
             }
 
-
-            strHTML += `<td class="${cellClassName}" onclick="onCellClicked(this, ${i},${j})">${cellContent}</td>`
+strHTML += `<td class="${cellClassName}"
+  onclick="onCellClicked(this, ${i}, ${j})"
+  oncontextmenu="onCellMarked(this, ${i}, ${j});">
+  ${cellContent}
+</td>`
         }
-
         strHTML += '</tr>'
     }
 
@@ -47,15 +49,12 @@ function countMinesNegs(pos, board) {
     return count
 }
 
-
-
 function removeMenuRightClick() {
   const elContainer = document.querySelector('.board-container')
   elContainer.addEventListener('contextmenu', function (event) {
     if (event.target.classList.contains('cell')) event.preventDefault()
   })
 }
-
 
 function getRandomIntInclusive(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min
