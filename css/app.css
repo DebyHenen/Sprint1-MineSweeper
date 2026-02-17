@@ -4,6 +4,8 @@ body {
 
 h1 {
     text-align: center;
+        font-size: 45px;
+
 }
 
 table {
@@ -27,9 +29,20 @@ td {
 }
 
 .board-container {
-    border-collapse: collapse;
+        border-collapse: collapse;
+
 }
 
+.btns-container {
+    margin: 30px auto;
+    text-align: center;
+
+}
+
+.btns-container button{
+  font-family: "Gisha", sans-serif;
+  font-size: 25px;
+}
 .revealed {
     border: 2px solid rgb(121, 121, 121);
     background-color: rgb(172, 172, 172);
@@ -37,4 +50,27 @@ td {
 
 .mine {
     background-color: rgb(255, 88, 88);
+}
+
+.game-settings{
+  text-align: center;
+  align-items: center;
+margin-bottom: 20px;
+}
+
+.flag-count, .smiley, .timer{
+  width: 100px;        
+  text-align: center;
+  font-size: 24px;
+    background-color: lightgray;
+  border-radius: 8px;
+  display: inline-block;
+ 
+}
+
+.app-footer{
+  margin-top: 20px;
+  text-align: center;
+  font-family: "Gisha", sans-serif;
+  font-size: 16px;
 }
