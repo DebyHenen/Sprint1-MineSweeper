@@ -4,7 +4,7 @@ body {
 
 h1 {
     text-align: center;
-        font-size: 45px;
+    font-size: 45px;
 
 }
 
@@ -15,8 +15,8 @@ table {
 }
 
 .cell {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     text-align: center;
     vertical-align: middle;
     font-size: 22px;
@@ -29,7 +29,7 @@ td {
 }
 
 .board-container {
-        border-collapse: collapse;
+    border-collapse: collapse;
 
 }
 
@@ -39,10 +39,11 @@ td {
 
 }
 
-.btns-container button{
-  font-family: "Gisha", sans-serif;
-  font-size: 25px;
+.btns-container button {
+    font-family: "Gisha", sans-serif;
+    font-size: 25px;
 }
+
 .revealed {
     border: 2px solid rgb(121, 121, 121);
     background-color: rgb(172, 172, 172);
@@ -52,25 +53,32 @@ td {
     background-color: rgb(255, 88, 88);
 }
 
-.game-settings{
-  text-align: center;
-  align-items: center;
-margin-bottom: 20px;
+.game-settings {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+
 }
 
-.flag-count, .smiley, .timer{
-  width: 100px;        
-  text-align: center;
-  font-size: 24px;
+.flag-count,
+.smiley,
+.timer {
+    width: 100px;
+    height: 40px;
+    display: flex;
+    text-align: center;
+    font-size: 26px;
     background-color: lightgray;
-  border-radius: 8px;
-  display: inline-block;
- 
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
 }
 
-.app-footer{
-  margin-top: 20px;
-  text-align: center;
-  font-family: "Gisha", sans-serif;
-  font-size: 16px;
+.app-footer {
+    margin-top: 20px;
+    text-align: center;
+    font-family: "Gisha", sans-serif;
+    font-size: 16px;
 }
