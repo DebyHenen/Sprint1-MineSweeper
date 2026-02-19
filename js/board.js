@@ -16,8 +16,6 @@ function buildBoard() {
             }
         }
     }
-    // board[0][3].isMine = true
-    // board[3][2].isMine = true
     console.table(board)
     return board
 }

@@ -25,16 +25,17 @@ function countMinesNegs(pos, board) {
     return count
 }
 
-function placeRndMines(board, numMines) {
-  var count = 0
+function placeRndMines(board, numMines, excludePos) {
+    var count = 0
 
-  while (count < numMines) {
-    var randI = getRandomIntInclusive(0, board.length - 1)
-    var randJ = getRandomIntInclusive(0, board[0].length - 1)
+    while (count < numMines) {
+        var randI = getRandomIntInclusive(0, board.length - 1)
+        var randJ = getRandomIntInclusive(0, board[0].length - 1)
 
-    if (board[randI][randJ].isMine) continue
+        if (randI === excludePos.i && randJ === excludePos.j) continue
+        if (board[randI][randJ].isMine) continue
 
-    board[randI][randJ].isMine = true
-    count++
-  }
+        board[randI][randJ].isMine = true
+        count++
+    }
 }

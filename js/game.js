@@ -10,7 +10,8 @@ const gGame = {
     isOn: false,
     revealedCount: 0,
     markedCount: 0,
-    secsPassed: 0
+    secsPassed: 0,
+    isFirstClick: true
 }
 
 const gLevel = {
@@ -28,14 +29,13 @@ function onInit() {
     gGame.revealedCount = 0
     gGame.markedCount = 0
     gGame.secsPassed = 0
+    gGame.isFirstClick = true
     gFlagsCounter = gLevel.MINES
 
     renderTimer()
     renderFlagsCount()
     renderSmiley(0)
-
     gBoard = buildBoard()
-    placeRndMines(gBoard, gLevel.MINES)
     setMinesNegsCount(gBoard)
     renderBoard(gBoard)
     removeMenuRightClick()
@@ -48,14 +48,17 @@ function onCellClicked(elCell, i, j) {
     const cell = gBoard[i][j]
     if (cell.isRevealed || cell.isMarked) return
 
-    startTimer()
+    if (gGame.isFirstClick) {
+        placeRndMines(gBoard, gLevel.MINES, { i, j })
+        gGame.isFirstClick = false
+        startTimer()
+    }
 
     cell.isRevealed = true
 
     if (cell.isMine) {
         elCell.innerText = MINE
         elCell.classList.add('mine', 'revealed')
-        gGame.isOn = false
         gameOver()
         return
     }
@@ -69,6 +72,7 @@ function onCellClicked(elCell, i, j) {
 
     elCell.classList.add('revealed')
     checkGameOver()
+    console.table(gBoard)
 }
 
 function onCellMarked(elCell, i, j) {
@@ -136,10 +140,11 @@ function expandReveal(pos, board) {
 }
 
 function gameOver() {
-    console.log('Game Over 💥')
+    gGame.isOn = false
     stopTimer()
     revealAllMines(gBoard)
     renderSmiley(2)
+    console.log('Game Over 💥')
 }
 
 function onSetLevel(size, mines) {
