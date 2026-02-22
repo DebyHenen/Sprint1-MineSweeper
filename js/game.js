@@ -36,7 +36,6 @@ function onInit() {
     renderFlagsCount()
     renderSmiley(0)
     gBoard = buildBoard()
-    setMinesNegsCount(gBoard)
     renderBoard(gBoard)
     removeMenuRightClick()
 }
@@ -50,6 +49,7 @@ function onCellClicked(elCell, i, j) {
 
     if (gGame.isFirstClick) {
         placeRndMines(gBoard, gLevel.MINES, { i, j })
+        setMinesNegsCount(gBoard)
         gGame.isFirstClick = false
         startTimer()
     }
@@ -99,19 +99,6 @@ function checkGameOver() {
         stopTimer()
         renderSmiley(1)
         console.log('you win!')
-    }
-}
-
-function revealAllMines(board) {
-    for (var i = 0; i < board.length; i++) {
-        for (var j = 0; j < board[0].length; j++) {
-            const cell = board[i][j]
-            if (!cell.isMine || cell.isMarked) continue
-
-            const elCell = document.querySelector(`.cell-${i}-${j}`)
-            elCell.innerText = MINE
-            elCell.classList.add('revealed')
-        }
     }
 }
 

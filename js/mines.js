@@ -39,3 +39,16 @@ function placeRndMines(board, numMines, excludePos) {
         count++
     }
 }
+
+function revealAllMines(board) {
+    for (var i = 0; i < board.length; i++) {
+        for (var j = 0; j < board[0].length; j++) {
+            const cell = board[i][j]
+            if (!cell.isMine || cell.isMarked) continue
+
+            const elCell = document.querySelector(`.cell-${i}-${j}`)
+            elCell.innerText = MINE
+            elCell.classList.add('revealed')
+        }
+    }
+}
