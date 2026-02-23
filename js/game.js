@@ -58,19 +58,26 @@ function onCellClicked(elCell, i, j) {
 
     if (cell.isMine) {
         elCell.innerText = MINE
-        elCell.classList.add('mine', 'revealed')
+        elCell.classList.add('mine')
         gameOver()
         return
     }
 
     gGame.revealedCount++
+
+    elCell.classList.remove('num-1', 'num-2', 'num-3', 'num-4', 'num-5', 'num-6', 'num-7', 'num-8')
+
     var content = ''
-    if (cell.minesAroundCount > 0) content = cell.minesAroundCount
+    if (cell.minesAroundCount > 0) {
+        content = cell.minesAroundCount
+        elCell.classList.add(`num-${cell.minesAroundCount}`)
+    }
+
     elCell.innerText = content
+    elCell.classList.add('revealed')
 
     if (cell.minesAroundCount === 0) expandReveal({ i, j }, gBoard)
 
-    elCell.classList.add('revealed')
     checkGameOver()
     console.table(gBoard)
 }
@@ -118,9 +125,13 @@ function expandReveal(pos, board) {
 
             const elNeighbor = document.querySelector(`.cell-${i}-${j}`)
             elNeighbor.classList.add('revealed')
+            elNeighbor.classList.remove('num-1', 'num-2', 'num-3', 'num-4', 'num-5', 'num-6', 'num-7', 'num-8')
 
             var content = ''
-            if (neighbor.minesAroundCount > 0) content = neighbor.minesAroundCount
+            if (neighbor.minesAroundCount > 0) {
+                content = neighbor.minesAroundCount
+                elNeighbor.classList.add(`num-${neighbor.minesAroundCount}`)
+            }
             elNeighbor.innerText = content
         }
     }
@@ -154,7 +165,7 @@ function stopTimer() {
 }
 
 function renderFlagsCount() {
-    document.querySelector('.flag-count span').innerText = gFlagsCounter
+    document.querySelector('.flag-count .flag-num').innerText = gFlagsCounter
 }
 
 function renderTimer() {

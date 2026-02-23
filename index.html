@@ -12,25 +12,26 @@
 <body onload="onInit()">
     <h1>Mine Sweeper</h1>
 
-    <div class="game-settings">
-        <div class="flag-count"><span></span></div>
-        <button class="smiley" onclick="onInit()"><span></span></button>
-        <div class="timer"><span></span></div>
-    </div>
+    <div class="game-container">
+        <div class="game-settings">
+            <div class="flag-count"><span>🚩</span><span class="flag-num"></span></div>
+            <button class="smiley" onclick="onInit()"><span></span></button>
+            <div class="timer">🕒<span></span></div>
+        </div>
 
-    <div class="board-container">
-    </div>
-
-    <div class="btns-container">
-        <button onclick="onSetLevel(4, 2)">Beginner</button>
-        <button onclick="onSetLevel(8, 14)">Medium</button>
-        <button onclick="onSetLevel(12, 32)">Expert</button>
-    </div>
-
-<script src="js/utils.js"></script>
-<script src="js/mines.js"></script>
-<script src="js/board.js"></script>
-<script src="js/game.js"></script>
+        <div class="board-container">
+        </div>
+</div>
+        <div class="btns-container">
+            <button onclick="onSetLevel(4, 2)">Beginner</button>
+            <button onclick="onSetLevel(8, 14)">Medium</button>
+            <button onclick="onSetLevel(12, 32)">Expert</button>
+        </div>
+    
+    <script src="js/utils.js"></script>
+    <script src="js/mines.js"></script>
+    <script src="js/board.js"></script>
+    <script src="js/game.js"></script>
 
     <footer class="app-footer">
         Deby Henen
